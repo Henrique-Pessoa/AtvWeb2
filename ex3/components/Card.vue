@@ -12,6 +12,6 @@ const itens = defineProps({
   <div class=" flex-wrap rounded-2xl">
     <h1 class=" text-yellow-500 font-bold ml-5">{{ itens.name }}</h1>
     <img/>
-    <h3 class="text-white font-medium ml-5">{{itens.price}}</h3>
+    <h3 class="text-white font-medium ml-10">R${{itens.price}}</h3>
   </div>
 </template>

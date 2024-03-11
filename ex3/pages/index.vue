@@ -22,24 +22,29 @@ const itens = [
   { name: "Produto 19", price: 70.00 },
   { name: "Produto 20", price: 30.00 },
 ];
-const wishlist:any = ref([]);
-const addWishlist = () => {
-    wishlist.push(1)
+const wishlist:Ref<any[]> = ref([]);
+const isClicked:Ref<boolean> = ref(false);
+
+const addWishlist = (item:any) => {
+    wishlist.value.push(item);
+    isClicked.value = true;
+    setTimeout(() => {
+        isClicked.value = false;
+    }, 1000);
 }
 </script>
 
-
 <template>
-<main class="bg-neutral-700 w-screen h-screen">
-    <nav class="w-screen h-12 bg-zinc-500 justify-end flex">
-        <Icon name="uil:cart" class="text-5xl"/>
-    </nav>
-    <div class="flex flex-wrap w-screen gap-15 justify-center content-center">
-        <div v-for="item in itens" class="w-72 h-40 bg-neutral-900 flex flex-wrap rounded-2xl ml-10 mt-5 flex-col justify-center content-center">
-        <Card :name="item.name" :price="item.price" image="legal"/>
-        <button @click="addWishlist" class="bg-yellow-400 w-32 h-10 rounded-2xl">Add to card</button>
-            {{ wishlist }}
-    </div>
-    </div>
-</main>
-</template>
+    <main class="bg-neutral-800 w-screen h-screen">
+      <nav class="w-screen h-16  bg-slate-400 border-b-4 border-black justify-end flex items-center text-end">
+        <h2 :class="{ 'text-green-400 scale-110 ease-in-out': isClicked, '': !isClicked, 'text-3xl': isClicked }" class="text-2xl mt-2 mr-2 text-white">{{ wishlist.length }}</h2>
+        <Icon :class="{ 'text-green-400 ease-in-out': isClicked, '': !isClicked, 'text-3xl': isClicked }" name="uil:cart" class="text-5xl text-white cursor-pointer hover:scale-150 mr-5"/>
+      </nav>
+      <div class="flex flex-wrap w-screen gap-15 justify-center content-center">
+        <div v-for="item in itens" :key="item.name" class="w-72 h-40 bg-neutral-900 flex flex-wrap rounded-2xl ml-10 mt-5 flex-col justify-center content-center">
+          <Card :name="item.name" :price="item.price" image="legal"/>
+          <button @click="addWishlist(item)" class="bg-yellow-400 w-32 h-10 rounded-2xl">Add to cart</button>
+        </div>
+      </div>
+    </main>
+  </template>
