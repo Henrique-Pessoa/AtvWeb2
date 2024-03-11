@@ -22,8 +22,8 @@ const itens = [
   { name: "Produto 19", price: 70.00 },
   { name: "Produto 20", price: 30.00 },
 ];
-const wishlist:Ref<any[]> = ref([]);
-const isClicked:Ref<boolean> = ref(false);
+const wishlist:any = ref([]);
+const isClicked:any = ref(false);
 
 const addWishlist = (item:any) => {
     wishlist.value.push(item);
@@ -37,8 +37,9 @@ const addWishlist = (item:any) => {
 <template>
     <main class="bg-neutral-800 w-screen h-screen">
       <nav class="w-screen h-16  bg-slate-400 border-b-4 border-black justify-end flex items-center text-end">
-        <h2 :class="{ 'text-green-400 scale-110 ease-in-out': isClicked, '': !isClicked, 'text-3xl': isClicked }" class="text-2xl mt-2 mr-2 text-white">{{ wishlist.length }}</h2>
-        <Icon :class="{ 'text-green-400 ease-in-out': isClicked, '': !isClicked, 'text-3xl': isClicked }" name="uil:cart" class="text-5xl text-white cursor-pointer hover:scale-150 mr-5"/>
+        <h2 :class="{ 'text-green-400 scale-110 ease-in-out': isClicked, 'text-white': !isClicked, ' text-3xl': isClicked }" class="text-2xl mt-2 mr-2">{{ wishlist.length }}</h2>
+        <NuxtLink to="/cart">
+        <Icon :class="{ 'text-green-400 ease-in-out': isClicked, '': !isClicked, 'text-3xl text-white': isClicked }" name="uil:cart" class="text-5xl text-white cursor-pointer hover:scale-150 mr-5"/>      </NuxtLink>
       </nav>
       <div class="flex flex-wrap w-screen gap-15 justify-center content-center">
         <div v-for="item in itens" :key="item.name" class="w-72 h-40 bg-neutral-900 flex flex-wrap rounded-2xl ml-10 mt-5 flex-col justify-center content-center">
