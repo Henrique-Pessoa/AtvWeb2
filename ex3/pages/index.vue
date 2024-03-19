@@ -22,7 +22,6 @@ const itens = [
   { name: "Produto 19", price: 70.00 },
   { name: "Produto 20", price: 30.00 },
 ];
-
 const wishlist:Ref<{ name: string; price: number }[]> = ref([]);
 const isClicked:Ref<boolean> = ref(false);
 
