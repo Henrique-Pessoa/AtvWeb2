@@ -54,7 +54,13 @@ function deleteItem(index: number) {
 
 async function endShop() {
   alert("Compra finalizada");
-  console.log("ok")
+  const products = Object.values(wishlist.value);
+  products.forEach(product => {
+  console.log(product.name);
+  console.log(product.price);
+  console.log(product.quantity);
+  console.log(product.image);
+});
 }
 
 
@@ -71,7 +77,7 @@ async function endShop() {
     </NuxtLink>
   </div>
   <div>
-    <button class="bg-zinc-100 font-semibold text-black w-24 h-10 rounded-3xl mr-5" @click="endShop()">
+    <button class="bg-zinc-100 font-semibold text-black w-24 h-10 rounded-3xl mr-5" @click="endShop">
       Finalizar
     </button>
   </div>

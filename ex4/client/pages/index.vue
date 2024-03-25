@@ -48,7 +48,6 @@ const goToCart = () => {
                 <button @click="addWishlist(item)" class="bg-yellow-400 w-32 h-10 rounded-2xl">Add to cart</button>
             
             </div>
-            {{ items }}
         </div>
     </main>
 </template>
