@@ -52,14 +52,17 @@ function deleteItem(index: number) {
   updateTotal();
 }
 
-async function endShop() {
+function endShop() {
   alert("Compra finalizada");
   const products = Object.values(wishlist.value);
   products.forEach(product => {
-  console.log(product.name);
-  console.log(product.price);
-  console.log(product.quantity);
-  console.log(product.image);
+    const { data } = useFetch("http://127.0.0.1:8000/Purchased/", {
+      method: "POST",
+      body: JSON.stringify({
+        quantity: product.quantity,
+        product: product.id,
+      }),
+    });
 });
 }
 
