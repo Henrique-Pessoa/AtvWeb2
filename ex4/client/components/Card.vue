@@ -12,6 +12,6 @@ const itens = defineProps({
   <div class="flex flex-col">
     <h1 class=" text-yellow-500 font-bold ">{{ itens.name }}</h1>
     <img :src="image" class="w-20 "/>
-    <h3 class="text-white font-medium ml-5">R${{itens.price}}</h3>
+    <h3 class="text-white font-medium ml-2">R${{itens.price}}</h3>
   </div>
 </template>

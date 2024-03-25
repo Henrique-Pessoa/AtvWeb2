@@ -2,6 +2,7 @@
 import { ref, onMounted} from "vue";
 
 interface WishlistItem {
+  id:number;
   name: string;
   price: number;
   image: string;
@@ -10,7 +11,6 @@ interface WishlistItem {
 
 const wishlist = ref<WishlistItem[]>([]);
 const total = ref<number>(0);
-const showModal = ref<boolean>(false);
 
 onMounted(() => {
   const storedWishlist = localStorage.getItem("wishlist");
@@ -52,10 +52,12 @@ function deleteItem(index: number) {
   updateTotal();
 }
 
-function endShop(){
-  alert("Compra finalizada")
-  console.log(wishlist)
+async function endShop() {
+  alert("Compra finalizada");
+  console.log("ok")
 }
+
+
 </script>
 
 <template>
@@ -102,7 +104,7 @@ function endShop(){
       </div>
     </div>
     <div class="w-full h-10 bg-violet-100  mt-5 border-t-2 border-b-2 border-purple-600 text-center">
-      <h1 class="font-bold text-2xl">Valor total a ser pago: {{ total }}</h1>
+      <h1 class="font-bold text-2xl">Valor total a ser pago: R${{ total.toFixed(2) }}</h1>
     </div>
   </div>
 </template>
